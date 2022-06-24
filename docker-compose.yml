@@ -12,8 +12,8 @@ services:
     environment:
       - ENVIRONMENT=dev
       - TESTING=0
-      - DATABASE_URL=postgres://postgres:postgres@web-db:5432/datahandler_dev        
-      - DATABASE_TEST_URL=postgres://postgres:postgres@web-db:5432/datahandler_test
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@web-db:5432/datahandler_dev        
+      - DATABASE_TEST_URL=postgresql+asyncpg://postgres:postgres@web-db:5432/datahandler_test
     depends_on:   
       - web-db
 
