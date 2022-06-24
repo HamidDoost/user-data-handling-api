@@ -8,7 +8,6 @@ from sqlalchemy.orm import sessionmaker
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
-
 engine = create_async_engine(  # Initializing a new async SQLAlchemy engine
     DATABASE_URL, echo=True, future=True  # enabling to see SQL queries in terminal
 )
