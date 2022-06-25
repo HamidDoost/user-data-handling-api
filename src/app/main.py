@@ -1,18 +1,17 @@
-from fastapi import FastAPI, Depends
-from app.config import get_settings, Settings
-from app.db import engine, SQLModel, init_db
+import os
+
+from fastapi import FastAPI
+from app.db import engine, SQLModel
 from app.models import Hero
+from app.api import health
 
 
-app = FastAPI()
+def create_application() -> FastAPI:
+    application = FastAPI()
+
+    application.include_router(health.router)
+
+    return application
 
 
-
-
-@app.get("/ping")
-async def pong(settings: Settings = Depends(get_settings)):
-    return {
-        "ping": "pong!",
-        "environment": settings.environment,
-        "testig": settings.testing,
-    }
+app = create_application()
