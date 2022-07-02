@@ -1,4 +1,6 @@
 my_env
+.DS_Store
 .dockerignore
 Dockerfile
 Dockerfile.prod
+.coverage

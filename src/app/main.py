@@ -1,10 +1,11 @@
 import os
 
 from fastapi import FastAPI
-from app.db import engine, SQLModel
+
+from app.api import experiment, health, user
+from app.db import SQLModel, engine
 from app.models.experiment_model import Experiment
 from app.models.user_model import User
-from app.api import health, user, experiment
 
 
 def create_application() -> FastAPI:
