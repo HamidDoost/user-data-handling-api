@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
-from app.db import get_async_session, init_db
+from app.db import get_async_session
 from app.models.experiment_model import Experiment
 
 router = APIRouter(
@@ -12,7 +12,7 @@ router = APIRouter(
 )
 
 
-@router.get("/experiments", response_model=list[Experiment])
+@router.get("/", response_model=list[Experiment])
 async def get_experiments(session: AsyncSession = Depends(get_async_session)):
     result = await session.execute(select(Experiment))
     experiments = result.scalars().all()
@@ -26,14 +26,14 @@ async def get_experiments(session: AsyncSession = Depends(get_async_session)):
     ]
 
 
-@router.post("/experiments")
+@router.post("/", status_code=201)
 async def add_experiment(
     experiment: Experiment, session: AsyncSession = Depends(get_async_session)
 ):
     experiment = Experiment(
         experiment_name=experiment.experiment_name,
-        experiment_description=experiment.experiment_description,
-        id=experiment.id,
+        experiment_description=experiment.experiment_description
+       
     )
     session.add(experiment)
     await session.commit()
