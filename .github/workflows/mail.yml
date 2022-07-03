@@ -61,11 +61,11 @@ jobs:
           docker run \
             -d \
             --name user-data-handling-api \
-            -e PORT=8765 \
+            -e PORT=5432 \
             -e ENVIRONMENT=dev \
             -e DATABASE_URL=postgresql+asyncpg://postgres:postgres@web-db:5432/datahandler_dev \
             -e DATABASE_TEST_URL=postgresql+asyncpg://postgres:postgres@web-db:5432/datahandler_test \
-            -p 5003:8765 \
+            -p 5432:5432 \
             ${{ env.IMAGE }}:latest
       - name: Pytest
         run: docker exec user-data-handling-api python -m pytest .
