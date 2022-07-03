@@ -63,8 +63,8 @@ jobs:
             --name user-data-handling-api \
             -e PORT=8765 \
             -e ENVIRONMENT=dev \
-            -e DATABASE_URL=sqlite://sqlite.db \
-            -e DATABASE_TEST_URL=sqlite://sqlite.db \
+            -e DATABASE_URL=postgresql+asyncpg://postgres:postgres@web-db:5432/datahandler_dev \
+            -e DATABASE_TEST_URL=postgresql+asyncpg://postgres:postgres@web-db:5432/datahandler_test \
             -p 5003:8765 \
             ${{ env.IMAGE }}:latest
       - name: Pytest
