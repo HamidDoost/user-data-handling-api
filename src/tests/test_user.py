@@ -12,7 +12,7 @@ def test_add_user(test_app):
         "last_name": "string",
         "email": "string",
         "phone": "string",
-        "age": 0
+        "age": 0,
     }
 
     response = test_app.post("/users/", json=data)

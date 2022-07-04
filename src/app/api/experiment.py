@@ -32,8 +32,7 @@ async def add_experiment(
 ):
     experiment = Experiment(
         experiment_name=experiment.experiment_name,
-        experiment_description=experiment.experiment_description
-       
+        experiment_description=experiment.experiment_description,
     )
     session.add(experiment)
     await session.commit()
