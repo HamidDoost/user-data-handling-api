@@ -4,3 +4,4 @@ my_env
 Dockerfile
 Dockerfile.prod
 .coverage
+.tkn

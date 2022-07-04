@@ -3,3 +3,4 @@ my_env
 .DS_Store
 .python-version
 .coverage
+.tkn

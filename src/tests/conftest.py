@@ -1,8 +1,8 @@
 import os
 
 import pytest
-
 from fastapi.testclient import TestClient
+
 from app.config import Settings, get_settings
 from app.main import create_application
 

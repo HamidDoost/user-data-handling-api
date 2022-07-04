@@ -29,14 +29,14 @@ async def get_users(session: AsyncSession = Depends(get_async_session)):
     ]
 
 
-@router.post("/",status_code=201)
+@router.post("/", status_code=201)
 async def add_user(user: User, session: AsyncSession = Depends(get_async_session)):
     user = User(
         first_name=user.first_name,
         last_name=user.last_name,
         email=user.email,
         phone=user.phone,
-        age=user.age
+        age=user.age,
     )
     session.add(user)
     await session.commit()
