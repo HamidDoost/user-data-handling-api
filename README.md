@@ -30,12 +30,14 @@ I used the following technologies for creating user-data-api.
 | Technology | Description | Version |
 |------------|-------------------------------------------|--------|
 | Python | Main programming language | 3.10.1 |
-| FastAPI | A modern web framework for building API | 0.70.1 |
+| FastAPI | A modern web framework for building API | 0.78.0 |
 | SQLModel | Object Relational Mapping | 0.0.6 |
-| Allembic | Database migrations | 1.8.0 |
-| Pytest | Testing Framework | 7.1.2 |
 | PostgreSQL | Relational Database Management System | 14.4 |
+| asyncpg | A database interface library for PostgreSQL and Python/asyncio | 0.25.0 |
+| Alembic | Database migration tool | 1.8.0 |
 | pgAdmin 4 | PostgreSQL Tools | 6.2 |
+| Pytest | Testing Framework | 7.1.2 |
+| Pytest-asyncio | Enabling asyncronous for testing framework | 0.18.3 |
 | Docker | Containerization of app, database and database admin tools | 20.10.11 |
 | OpenAPI | Testing API endpoints and documentation | 3.1.0 |
 | Github Actions | Automation of workflows, CI | |
@@ -57,7 +59,7 @@ user-data-handling-api has number of good features as follows:
 - Consistent code convention
 - Scalable designed architecture
 - Database migration
-- Unit testing
+- Unit testing with async calls
 - Production-ready docker images
 
 ---
@@ -128,7 +130,7 @@ I added linting through Github Actions on push and pull_requests.
 
 ## Database design and data modelling
 
-user-data-handling-api has user and experiment data models in a schema that provides one to many relationship between user and experiment models. For creatn models, I used SQLModel which is based on Pydantic and SQLAlchemy. Figure below demonstrates the entity relation diagram designed for database.
+user-data-handling-api has user and experiment data models in a schema that provides one to many relationship between user and experiment models. For creatn models, I used SQLModel which is based on Pydantic and SQLAlchemy.
 
 ---
 
