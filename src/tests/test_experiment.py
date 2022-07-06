@@ -7,24 +7,22 @@ from app.main import app
 
 
 @pytest.mark.asyncio
-async def test_get_users():
+async def test_get_experiments():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.get("/users/")
+        response = await ac.get("/experiments/")
         assert response.status_code == 200
         # Todo: fix this when correct mocking with FastAPI
         # assert response.json() == []
 
 
 @pytest.mark.asyncio
-async def test_add_user():
+async def test_add_experiment():
     data = {
-        "first_name": "string",
-        "last_name": "string",
-        "email": "string",
-        "phone": "string",
-        "age": 0,
+        "experiment_name": "string",
+        "experiment_description": "string",
+        "user_id": None,
     }
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        response = await ac.post("/users/", json=data)
+        response = await ac.post("/experiments/", json=data)
         assert response.status_code == 201
         assert response.json() == {**data, "id": response.json()["id"]}

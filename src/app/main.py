@@ -1,3 +1,4 @@
+import asyncio
 import os
 
 from fastapi import FastAPI
@@ -19,3 +20,4 @@ def create_application() -> FastAPI:
 
 
 app = create_application()
+app.get_io_loop = asyncio.get_event_loop
