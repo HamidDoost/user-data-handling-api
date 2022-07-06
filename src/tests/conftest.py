@@ -1,20 +1,19 @@
 import os
-
+import asyncio
 import pytest
-from fastapi.testclient import TestClient
 
-from app.config import Settings, get_settings
-from app.main import create_application
+from app.config import Settings
 
 
+# Set environment variables for testing and test database
 def get_settings_override():
     return Settings(testing=1, database_url=os.environ.get("DATABASE_TEST_URL"))
 
+# Preventing pytest to send two tests to different event lops
+@pytest.fixture(scope="session")
+def event_loop(request):
+    """Create an instance of the default event loop for each test case."""
+    loop = asyncio.get_event_loop_policy().new_event_loop()
+    yield loop
+    loop.close()
 
-@pytest.fixture(scope="module")
-def test_app():
-    app = create_application()
-    app.dependency_overrides[get_settings] = get_settings_override
-    with TestClient(app) as test_client:
-
-        yield test_client
