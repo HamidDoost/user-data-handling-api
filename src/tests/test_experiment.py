@@ -20,7 +20,7 @@ async def test_add_experiment():
     data = {
         "experiment_name": "string",
         "experiment_description": "string",
-        "user_id": None
+        "user_id": None,
     }
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.post("/experiments/", json=data)

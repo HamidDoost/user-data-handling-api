@@ -11,6 +11,7 @@ engine = create_async_engine(  # Initializing a new async SQLAlchemy engine
     DATABASE_URL, echo=True, future=True  # Enabling to see SQL queries in terminal
 )
 
+
 async def init_db():
     async with engine.begin() as conn:
         await conn.run_sync(SQLModel.metadata.drop_all)

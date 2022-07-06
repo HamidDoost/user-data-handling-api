@@ -14,6 +14,7 @@ async def test_get_users():
         # Todo: fix this when correct mocking with FastAPI
         # assert response.json() == []
 
+
 @pytest.mark.asyncio
 async def test_add_user():
     data = {

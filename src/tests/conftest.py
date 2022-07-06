@@ -9,6 +9,7 @@ from app.config import Settings
 def get_settings_override():
     return Settings(testing=1, database_url=os.environ.get("DATABASE_TEST_URL"))
 
+
 # Preventing pytest to send two tests to different event lops
 @pytest.fixture(scope="session")
 def event_loop(request):
@@ -16,4 +17,3 @@ def event_loop(request):
     loop = asyncio.get_event_loop_policy().new_event_loop()
     yield loop
     loop.close()
-
