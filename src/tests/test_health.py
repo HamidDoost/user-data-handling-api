@@ -1,9 +1,10 @@
 import os
+
 import pytest
 from httpx import AsyncClient
 
-from app.main import app
 from app.config import get_settings
+from app.main import app
 from tests.conftest import get_settings_override
 
 
