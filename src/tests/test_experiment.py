@@ -1,18 +1,17 @@
 import asyncio
-import pytest
 
+import pytest
 from httpx import AsyncClient
 
-from app.main import app
+from tests.conftest import app
 
 
 @pytest.mark.asyncio
-async def test_get_experiments():
+async def test_get_experiments(test_app_with_db):
     async with AsyncClient(app=app, base_url="http://test") as ac:
         response = await ac.get("/experiments/")
         assert response.status_code == 200
-        # Todo: fix this when correct mocking with FastAPI
-        # assert response.json() == []
+        assert response.json() == []
 
 
 @pytest.mark.asyncio
